@@ -1,118 +1,150 @@
 import { useState, useEffect, useRef } from "react";
-import Container from "../common/Container";
+import Logo from "../../assets/images/Logo.png";
 
-/**
- * Navbar
- * – Desktop: logo left, Sign In link + Sign Up pill button right
- * – Mobile:  logo left, hamburger right → slide-down drawer with same links
- * – Positioned absolute over the Hero (z-50) so the hero fills the full
- *   viewport without a gap at the top.
- */
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const drawerRef = useRef(null);
+  const navRef = useRef(null);
 
-  // Close drawer on outside click
   useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (drawerRef.current && !drawerRef.current.contains(e.target)) {
+    const onOutsideClick = (e) => {
+      if (navRef.current && !navRef.current.contains(e.target)) {
         setMenuOpen(false);
       }
     };
-    if (menuOpen) document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    if (menuOpen) document.addEventListener("mousedown", onOutsideClick);
+    return () => document.removeEventListener("mousedown", onOutsideClick);
   }, [menuOpen]);
 
-  // Close drawer on Escape key
   useEffect(() => {
-    const handleKey = (e) => {
-      if (e.key === "Escape") setMenuOpen(false);
-    };
-    document.addEventListener("keydown", handleKey);
-    return () => document.removeEventListener("keydown", handleKey);
+    const onKey = (e) => e.key === "Escape" && setMenuOpen(false);
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
   }, []);
 
-  const navLinks = (
-    <>
-      <a
-        href="#signin"
-        className="text-white/90 font-medium hover:text-white transition-colors duration-200"
-        onClick={() => setMenuOpen(false)}
-      >
-        Sign In
-      </a>
-      <a
-        href="#signup"
-        className="inline-block bg-sky-400 hover:bg-sky-300 text-white font-semibold px-6 py-2.5 rounded-full transition-all duration-200 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
-        onClick={() => setMenuOpen(false)}
-      >
-        Sign Up
-      </a>
-    </>
-  );
-
   return (
-    <header className="absolute top-0 left-0 w-full z-50" ref={drawerRef}>
-      <Container>
+    <header ref={navRef} className="absolute top-0 left-0 w-full z-50">
+      {/*
+        Using a full-bleed inner div instead of the shared Container so we can
+        control horizontal padding independently from the rest of the page.
+        px-8 lg:px-12 gives the tighter edge-to-content gap visible in Figma
+        while still being responsive.
+      */}
+      {/* max-w-[1440px] caps the navbar rail; px-12 = 48 px on desktop */}
+      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12">
         <nav
-          className="flex items-center justify-between py-5 md:py-7"
+          className="flex items-center justify-between pt-8 pb-4"
           aria-label="Main navigation"
         >
-          {/* Logo */}
+          {/* ── Logo ──────────────────────────────────────────────────────
+              w-[200px] puts the logo at ~200 px wide on desktop.
+              h-auto preserves the original aspect ratio — no cropping.
+              Previously h-10 (40 px tall) made it appear tiny.
+          ─────────────────────────────────────────────────────────────── */}
           <a
             href="/"
-            className="text-white text-2xl md:text-3xl font-bold tracking-tight focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded"
             aria-label="RemoteRecruit home"
+            className="mt-[15px] ml-[20px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded"
           >
-            RemoteRecruit
+            <img
+              src={Logo}
+              alt="RemoteRecruit logo"
+              className="w-[145px] h-auto object-contain"
+            />
           </a>
 
-          {/* Desktop links */}
-          <div className="hidden md:flex items-center gap-7" role="list">
-            {navLinks}
+          {/* ── Desktop actions ───────────────────────────────────────────
+              gap-5 keeps Sign In and Sign Up visually close together on
+              the right side without too much separation.
+          ─────────────────────────────────────────────────────────────── */}
+          <div className="hidden md:flex items-center gap-5">
+            {/*
+              Sign In: text-base (16 px) to balance the larger logo.
+              font-medium matches the Figma weight.
+            */}
+            <a
+              href="#signin"
+              className="text-white text-base font-medium hover:opacity-80
+                         transition-opacity duration-200
+                         focus-visible:outline-none focus-visible:ring-2
+                         focus-visible:ring-white rounded px-1"
+            >
+              Sign In
+            </a>
+
+            {/*
+              Sign Up button:
+              - bg-[#63C7E9]  → exact teal from the spec
+              - w-[100px] h-[48px] → spec dimensions
+              - rounded-full  → full pill
+              - flex items-center justify-center → centres text inside fixed dimensions
+              - font-medium (500) matches Figma weight
+              - hover:brightness-110 + hover:scale-105 = lift interaction
+            */}
+            <a
+              href="#signup"
+              className="flex items-center justify-center
+                         w-[100px] h-[48px] rounded-full
+                         bg-[#63C7E9] hover:brightness-110 hover:scale-105 active:scale-95
+                         text-white text-base font-medium
+                         transition-all duration-200
+                         focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            >
+              Sign Up
+            </a>
           </div>
 
-          {/* Mobile hamburger */}
+          {/* ── Mobile hamburger ──────────────────────────────────────── */}
           <button
-            className="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded"
+            className="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-[5px]
+                       focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded"
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
-            onClick={() => setMenuOpen((prev) => !prev)}
+            onClick={() => setMenuOpen((v) => !v)}
           >
             <span
-              className={`block w-6 h-0.5 bg-white transition-all duration-300 origin-center ${
-                menuOpen ? "rotate-45 translate-y-2" : ""
-              }`}
+              className={`block w-6 h-0.5 bg-white transition-all duration-300 origin-center
+                          ${menuOpen ? "rotate-45 translate-y-[7px]" : ""}`}
             />
             <span
-              className={`block w-6 h-0.5 bg-white transition-all duration-300 ${
-                menuOpen ? "opacity-0 scale-x-0" : ""
-              }`}
+              className={`block w-6 h-0.5 bg-white transition-all duration-300
+                          ${menuOpen ? "opacity-0 scale-x-0" : ""}`}
             />
             <span
-              className={`block w-6 h-0.5 bg-white transition-all duration-300 origin-center ${
-                menuOpen ? "-rotate-45 -translate-y-2" : ""
-              }`}
+              className={`block w-6 h-0.5 bg-white transition-all duration-300 origin-center
+                          ${menuOpen ? "-rotate-45 -translate-y-[7px]" : ""}`}
             />
           </button>
         </nav>
-      </Container>
+      </div>
 
-      {/* Mobile drawer */}
+      {/* ── Mobile slide-down drawer ─────────────────────────────────── */}
       <div
         id="mobile-menu"
         role="region"
         aria-label="Mobile navigation"
-        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          menuOpen ? "max-h-48 opacity-100" : "max-h-0 opacity-0"
-        }`}
+        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out
+                    ${menuOpen ? "max-h-40 opacity-100" : "max-h-0 opacity-0"}`}
       >
-        <Container>
-          <div className="flex flex-col gap-4 pb-6 pt-2">
-            {navLinks}
-          </div>
-        </Container>
+        <div className="px-8 pb-6 flex flex-col gap-4">
+          <a
+            href="#signin"
+            className="text-white text-sm font-medium hover:opacity-80 transition-opacity duration-200"
+            onClick={() => setMenuOpen(false)}
+          >
+            Sign In
+          </a>
+          <a
+            href="#signup"
+            className="flex items-center justify-center
+                       w-[100px] h-[44px] rounded-full
+                       bg-[#63C7E9] text-white text-sm font-medium
+                       transition-all duration-200 hover:brightness-110"
+            onClick={() => setMenuOpen(false)}
+          >
+            Sign Up
+          </a>
+        </div>
       </div>
     </header>
   );

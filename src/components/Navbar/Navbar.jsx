@@ -23,48 +23,53 @@ const Navbar = () => {
 
   return (
     <header ref={navRef} className="absolute top-0 left-0 w-full z-50">
+
       {/*
-        Using a full-bleed inner div instead of the shared Container so we can
-        control horizontal padding independently from the rest of the page.
-        px-8 lg:px-12 gives the tighter edge-to-content gap visible in Figma
-        while still being responsive.
+        Desktop nav rail
+        ─────────────────────────────────────────────────────────────────
+        pl-12  = 48px left  (logo 48px from left edge — spec)
+        pr-12  = 48px right (right items 48px from right edge — spec)
+        pt-8   = 32px top   (navbar 32px from top — spec)
+        pb-4   keeps the row a natural height without extra bottom gap
       */}
-      {/* max-w-[1440px] caps the navbar rail; px-12 = 48 px on desktop */}
-      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12">
+      <div className="w-full pl-4 pr-4 sm:pl-8 sm:pr-8 lg:pl-12 lg:pr-12">
         <nav
           className="flex items-center justify-between pt-8 pb-4"
           aria-label="Main navigation"
         >
-          {/* ── Logo ──────────────────────────────────────────────────────
-              w-[200px] puts the logo at ~200 px wide on desktop.
-              h-auto preserves the original aspect ratio — no cropping.
-              Previously h-10 (40 px tall) made it appear tiny.
-          ─────────────────────────────────────────────────────────────── */}
+
+          {/* ── Logo ────────────────────────────────────────────────────
+              w-[150px] — spec value (was 145px, reduced to 150px per spec)
+              h-auto    — preserves aspect ratio, no distortion
+          ──────────────────────────────────────────────────────────── */}
           <a
             href="/"
             aria-label="RemoteRecruit home"
-            className="mt-[15px] ml-[20px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded"
+            className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded shrink-0"
           >
             <img
               src={Logo}
               alt="RemoteRecruit logo"
-              className="w-[145px] h-auto object-contain"
+              className="w-[150px] h-auto object-contain"
             />
           </a>
 
-          {/* ── Desktop actions ───────────────────────────────────────────
-              gap-5 keeps Sign In and Sign Up visually close together on
-              the right side without too much separation.
-          ─────────────────────────────────────────────────────────────── */}
-          <div className="hidden md:flex items-center gap-5">
+          {/* ── Desktop: Sign In + Sign Up ────────────────────────────
+              gap-4 gives tight spacing between the two items matching
+              the Figma — they sit close together on the right.
+          ──────────────────────────────────────────────────────────── */}
+          <div className="hidden md:flex items-center gap-4">
+
             {/*
-              Sign In: text-base (16 px) to balance the larger logo.
-              font-medium matches the Figma weight.
+              Sign In
+              · text-[16px] font-medium — spec
+              · No background, plain white text link
+              · hover:opacity-75 = subtle interaction
             */}
             <a
               href="#signin"
-              className="text-white text-base font-medium hover:opacity-80
-                         transition-opacity duration-200
+              className="text-white font-medium hover:opacity-75
+                         transition-opacity duration-200 text-[16px]
                          focus-visible:outline-none focus-visible:ring-2
                          focus-visible:ring-white rounded px-1"
             >
@@ -72,53 +77,49 @@ const Navbar = () => {
             </a>
 
             {/*
-              Sign Up button:
-              - bg-[#63C7E9]  → exact teal from the spec
-              - w-[100px] h-[48px] → spec dimensions
-              - rounded-full  → full pill
-              - flex items-center justify-center → centres text inside fixed dimensions
-              - font-medium (500) matches Figma weight
-              - hover:brightness-110 + hover:scale-105 = lift interaction
+              Sign Up button
+              · w-[106px] h-[52px]    — exact spec dimensions
+              · rounded-[18px]        — spec border-radius (not fully pill)
+              · bg-[#63C7E9]          — teal from Figma
+              · text-[16px] font-medium — spec
+              · flex + center         — text centred inside fixed box
             */}
             <a
               href="#signup"
               className="flex items-center justify-center
-                         w-[100px] h-[48px] rounded-full
-                         bg-[#63C7E9] hover:brightness-110 hover:scale-105 active:scale-95
-                         text-white text-base font-medium
+                         w-[106px] h-[52px] rounded-[18px]
+                         bg-[#63C7E9] hover:brightness-110 hover:scale-[1.03]
+                         active:scale-95 text-white text-[16px] font-medium
                          transition-all duration-200
-                         focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                         focus-visible:outline-none focus-visible:ring-2
+                         focus-visible:ring-white"
             >
               Sign Up
             </a>
           </div>
 
-          {/* ── Mobile hamburger ──────────────────────────────────────── */}
+          {/* ── Mobile hamburger ─────────────────────────────────────── */}
           <button
-            className="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-[5px]
-                       focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded"
+            className="md:hidden flex flex-col justify-center items-center
+                       w-10 h-10 gap-[5px]
+                       focus-visible:outline-none focus-visible:ring-2
+                       focus-visible:ring-white rounded"
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
             onClick={() => setMenuOpen((v) => !v)}
           >
-            <span
-              className={`block w-6 h-0.5 bg-white transition-all duration-300 origin-center
-                          ${menuOpen ? "rotate-45 translate-y-[7px]" : ""}`}
-            />
-            <span
-              className={`block w-6 h-0.5 bg-white transition-all duration-300
-                          ${menuOpen ? "opacity-0 scale-x-0" : ""}`}
-            />
-            <span
-              className={`block w-6 h-0.5 bg-white transition-all duration-300 origin-center
-                          ${menuOpen ? "-rotate-45 -translate-y-[7px]" : ""}`}
-            />
+            <span className={`block w-6 h-0.5 bg-white transition-all duration-300 origin-center
+                              ${menuOpen ? "rotate-45 translate-y-[7px]" : ""}`} />
+            <span className={`block w-6 h-0.5 bg-white transition-all duration-300
+                              ${menuOpen ? "opacity-0 scale-x-0" : ""}`} />
+            <span className={`block w-6 h-0.5 bg-white transition-all duration-300 origin-center
+                              ${menuOpen ? "-rotate-45 -translate-y-[7px]" : ""}`} />
           </button>
         </nav>
       </div>
 
-      {/* ── Mobile slide-down drawer ─────────────────────────────────── */}
+      {/* ── Mobile drawer ────────────────────────────────────────────── */}
       <div
         id="mobile-menu"
         role="region"
@@ -126,10 +127,11 @@ const Navbar = () => {
         className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out
                     ${menuOpen ? "max-h-40 opacity-100" : "max-h-0 opacity-0"}`}
       >
-        <div className="px-8 pb-6 flex flex-col gap-4">
+        <div className="px-6 pb-6 flex flex-col gap-4">
           <a
             href="#signin"
-            className="text-white text-sm font-medium hover:opacity-80 transition-opacity duration-200"
+            className="text-white text-[16px] font-medium hover:opacity-75
+                       transition-opacity duration-200"
             onClick={() => setMenuOpen(false)}
           >
             Sign In
@@ -137,8 +139,8 @@ const Navbar = () => {
           <a
             href="#signup"
             className="flex items-center justify-center
-                       w-[100px] h-[44px] rounded-full
-                       bg-[#63C7E9] text-white text-sm font-medium
+                       w-[106px] h-[44px] rounded-[18px]
+                       bg-[#63C7E9] text-white text-[16px] font-medium
                        transition-all duration-200 hover:brightness-110"
             onClick={() => setMenuOpen(false)}
           >
@@ -146,6 +148,7 @@ const Navbar = () => {
           </a>
         </div>
       </div>
+
     </header>
   );
 };

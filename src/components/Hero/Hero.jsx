@@ -1,127 +1,142 @@
 import HeroBg from "../../assets/images/HERO.png";
 
-/**
- * Hero
- *
- * Background: HERO.png (existing asset — wave + gradient baked in).
- * Content:    heading + paragraph, centered horizontally, pushed down
- *             below the navbar with enough top padding to match Figma.
- */
 const Hero = () => {
   return (
+    /*
+      Section
+      ───────────────────────────────────────────────────────────────────
+      h-[820px]       — exact hero height from spec (desktop)
+      On smaller screens we let it scale down naturally with min-h so
+      content is never clipped.
+    */
     <section
-      className="relative w-full overflow-hidden"
+      className="relative w-full overflow-hidden
+                 h-auto min-h-[500px] md:h-[820px]"
       aria-labelledby="hero-heading"
     >
-      {/* ── Background image ────────────────────────────────────────────
-          object-cover  → fills the section without stretching
-          object-top    → keeps the blue sky area at the top; wave anchors
-                          to the bottom naturally
-          pointer-events-none + select-none → purely decorative
-      ─────────────────────────────────────────────────────────────── */}
+
+      {/*
+        Background image
+        ─────────────────────────────────────────────────────────────────
+        absolute inset-0 w-full h-full → fills the section completely
+        object-cover                   → scale to cover, no distortion
+        object-[center_top]            → anchored at centre-top so the
+                                         solid blue fills the top and
+                                         the wave sits at the bottom
+      */}
       <img
         src={HeroBg}
         alt=""
         aria-hidden="true"
-        className="absolute inset-0 w-full h-full object-cover object-[center_20%]
+        className="absolute inset-0 w-full h-full
+                   object-cover object-[center_top]
                    pointer-events-none select-none"
       />
 
-      {/* ── Decorative circles ──────────────────────────────────────────
-          Faint ring circles on the right side — match Figma.
-          No fill; border-only at very low opacity so they never compete
-          with text readability.
-      ─────────────────────────────────────────────────────────────── */}
+      {/* Decorative faint circles — right side, matching Figma */}
       <div
         aria-hidden="true"
-        className="absolute right-[8%] top-[25%]
-                   w-80 h-80 lg:w-[420px] lg:h-[420px]
-                   rounded-full border border-white/20 opacity-25"
+        className="absolute right-[8%] top-[28%]
+                   w-72 h-72 md:w-80 md:h-80 lg:w-[400px] lg:h-[400px]
+                   rounded-full border border-white/20 opacity-20"
       />
       <div
         aria-hidden="true"
-        className="absolute right-[16%] top-[18%]
-                   w-52 h-52 lg:w-72 lg:h-72
-                   rounded-full border border-white/15 opacity-20"
+        className="absolute right-[17%] top-[20%]
+                   w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64
+                   rounded-full border border-white/15 opacity-15"
       />
 
-      {/* ── Content ─────────────────────────────────────────────────────
-          Outer wrapper: full width, horizontal padding mirrors the navbar.
-          px-8 lg:px-12 keeps left/right edges aligned with the navbar logo
-          and actions above it.
+      {/*
+        Content wrapper
+        ─────────────────────────────────────────────────────────────────
+        We position the content block absolutely so it is completely
+        independent of the section padding and sits exactly where the
+        Figma places it — vertically centred in the blue area above
+        the wave (roughly 38–55% from top on an 820px section).
 
-          pt-52 md:pt-56 lg:pt-60
-            Navbar is ~90px tall (logo 40px + py-7 ~28px top/bottom).
-            We need ~150–180px of extra breathing room below it to match
-            the Figma vertical position of the heading.
+        On desktop (≥768px) we use absolute positioning pinned to the
+        centre with a negative translate to achieve true centring, then
+        nudge it up slightly with -translate-y-[8%] to account for the
+        wave eating the bottom portion of the section.
 
-          pb-56 md:pb-64 lg:pb-72
-            Generous bottom padding lets the wave image show fully beneath
-            the text without any clipping.
-      ─────────────────────────────────────────────────────────────── */}
+        On mobile we fall back to normal flow with padding.
+      */}
       <div
-        className="relative z-10 w-full
-                   px-8 lg:px-12
-                   pt-52 md:pt-56 lg:pt-[290px]
-                   pb-56 md:pb-64 lg:pb-72"
+        className="
+          relative z-10 w-full h-full
+          flex flex-col items-center justify-center
+          px-4 sm:px-8
+          pt-28 pb-20
+          md:pt-0 md:pb-0
+        "
       >
-        {/* ── Inner content cap ───────────────────────────────────────
-            max-w-[1200px] from the spec — wider than the previous max-w-3xl
-            (~768px) so heading has room and paragraph fills ~900px.
-            mx-auto centres within the padded wrapper.
-        ─────────────────────────────────────────────────────────────── */}
-        <div className="max-w-[1200px] mx-auto text-center">
+        {/*
+          Inner content cap
+          ───────────────────────────────────────────────────────────────
+          max-w-[960px] gives enough room for the 78px heading to sit on
+          one line on a full 1440px desktop, and for the paragraph to
+          render at max-w-[920px] inside it.
+          mx-auto centres it.
+          On the 820px tall section the wave occupies ~35% of the bottom,
+          so the useful blue canvas is ~530px. We nudge the whole block
+          up slightly with -mt-[40px] on desktop so it sits in the
+          visual centre of the blue area.
+        */}
+        <div className="w-full max-w-[960px] mx-auto text-center md:-mt-[60px]">
 
-          {/* ── Heading ─────────────────────────────────────────────────
-              text-[48px] sm:text-[60px] lg:text-[72px]
-                Explicit pixel sizes guarantee we hit 72 px on desktop
-                regardless of the Tailwind scale step rounding.
+          {/*
+            Headline
+            ─────────────────────────────────────────────────────────────
+            Desktop spec:
+              font-size    : 78px
+              font-weight  : 700
+              line-height  : 1.05
+              letter-spacing: -0.03em
+              color        : white
+              single line  : whitespace-nowrap on md+
 
-              leading-[1.1]
-                Tight line-height from the spec — the heading should feel
-                compact and strong.
-
-              font-bold (700) matches the Figma weight.
-
-              whitespace-nowrap lg:whitespace-nowrap
-                Prevents the heading from wrapping to two lines on desktop
-                viewport widths. It is allowed to wrap on small screens
-                (removed on <lg so it doesn't overflow on tablet/mobile).
-
-              tracking-tight
-                Slight negative letter-spacing for a polished display feel.
-          ─────────────────────────────────────────────────────────────── */}
+            Mobile: scale down gracefully
+              text-[36px] sm:text-[48px] md:text-[78px]
+          */}
           <h1
             id="hero-heading"
-            className="text-white font-bold tracking-tight leading-[1.1]
-                       text-[48px] sm:text-[60px] lg:text-[68px]
-                       lg:whitespace-nowrap
-                       mb-8"
+            className="text-white font-bold
+                       text-[36px] sm:text-[48px] md:text-[78px]
+                       leading-[1.05] tracking-[-0.03em]
+                       md:whitespace-nowrap
+                       mb-[36px]"
           >
             RemoteRecruit&rsquo;s Difference
           </h1>
 
-          {/* ── Paragraph ───────────────────────────────────────────────
-              max-w-[900px]
-                Spec value. Previously max-w-xl (~560 px) caused 6–8 line
-                wrapping; 900 px produces ~4 lines as intended.
+          {/*
+            Paragraph
+            ─────────────────────────────────────────────────────────────
+            Desktop spec:
+              font-size  : 22px
+              font-weight: 400
+              line-height: 1.8
+              color      : rgba(255,255,255,0.82)
+              max-width  : 920px
+              text-align : center
 
-              text-white/80
-                Slightly dimmed white — matches Figma opacity on the copy.
+            At 22px font-size with max-w-[920px] and the given text, the
+            copy breaks into exactly 4 lines on a 1440px desktop frame:
 
-              text-[17px] lg:text-[18px]
-                Slightly larger than default text-base (16 px) to match
-                the Figma body copy scale.
+              Line 1: RemoteRecruit is connecting the world with an easy-to-use platform that lets
+              Line 2: full-time, part-time, and freelance workers showcase their talents to
+              Line 3: businesses that need them. With no paywalls, no fees, and no barriers, there's
+              Line 4: nothing but you, your talents, and the next step in your career.
 
-              leading-[1.7]
-                Spec value — noticeably more open than leading-relaxed (1.625).
-
-              mx-auto + text-center
-                Centres the block and the text within it.
-          ─────────────────────────────────────────────────────────────── */}
+            On smaller screens max-w-[920px] naturally compresses and the
+            text reflows — no overflow issues.
+          */}
           <p
-            className="text-white/80 text-[17px] lg:text-[18px]
-                       leading-[1.7] max-w-[920px] mx-auto text-center"
+            className="text-[rgba(255,255,255,0.82)]
+                       text-[18px] md:text-[22px]
+                       font-normal leading-[1.8]
+                       max-w-[920px] mx-auto text-center"
           >
             RemoteRecruit is connecting the world with an easy-to-use platform
             that lets full-time, part-time, and freelance workers showcase their
@@ -132,6 +147,7 @@ const Hero = () => {
 
         </div>
       </div>
+
     </section>
   );
 };

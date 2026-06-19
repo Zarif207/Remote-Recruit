@@ -7,31 +7,33 @@ const fadeUp = (delay = 0) => ({
 });
 
 const FeatureSection = () => (
-  <section className="w-full bg-white pt-[60px] pb-[60px] lg:pt-[100px] lg:pb-[100px] overflow-hidden">
-    <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
-      <div className="grid grid-cols-1 lg:grid-cols-[500px_620px] items-center gap-y-12 lg:gap-y-0 gap-x-[100px]">
+  <section className="w-full bg-white py-[60px] md:py-[80px] lg:py-[100px] overflow-hidden">
+    <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="flex flex-col lg:flex-row items-center gap-10 md:gap-12 lg:gap-[80px]">
 
-        {/* LEFT */}
+        {/* LEFT — text */}
         <motion.div
           variants={fadeUp(0)}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
-          className="lg:-ml-[30px]"
+          className="w-full lg:w-[480px] lg:shrink-0 text-center lg:text-left"
         >
-          <span className="inline-flex items-center px-5 py-2.5 rounded-full
-                           bg-[#CFEFFF] text-[#1B3B66] text-[14px] font-bold mb-7">
+          <span className="inline-flex items-center px-5 py-2 rounded-full
+                           bg-[#CFEFFF] text-[#1B3B66] text-[13px] sm:text-[14px] font-bold
+                           mb-5 sm:mb-6">
             Global Reach
           </span>
 
-          <h2 className="max-w-[480px] w-full text-[#11142D]
-                         text-[32px] sm:text-[40px] lg:text-[52px]
-                         font-normal leading-[1.15] tracking-[-0.01em]">
-            <span className="block">The First Fully Global Job</span>
-            <span className="block">Board, Anywhere, Ever</span>
+          <h2 className="w-full text-[#11142D] font-normal leading-[1.15] tracking-[-0.01em]
+                         text-[28px] sm:text-[36px] md:text-[42px] lg:text-[52px]
+                         mb-0">
+            The First Fully Global Job Board, Anywhere, Ever
           </h2>
 
-          <p className="mt-7 max-w-[480px] w-full text-[#6B7088] text-[17px] leading-[1.85] font-normal">
+          <p className="mt-5 sm:mt-6 text-[#6B7088] font-normal leading-[1.8]
+                        text-[15px] sm:text-[16px] lg:text-[17px]
+                        max-w-full lg:max-w-[460px] mx-auto lg:mx-0">
             RemoteRecruit connects candidates with opportunities around the
             world. With today&rsquo;s remote-first workforce, you need to be
             able to find the best jobs and the best people for them,
@@ -39,16 +41,17 @@ const FeatureSection = () => (
           </p>
         </motion.div>
 
-        {/* RIGHT */}
+        {/* RIGHT — illustration */}
         <motion.div
           variants={fadeUp(0.15)}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
-          className="flex justify-center lg:justify-end"
+          className="w-full flex justify-center lg:justify-end"
         >
           <img src={Illustration} alt="RemoteRecruit platform"
-               className="w-full max-w-[620px] h-auto object-contain select-none"
+               className="w-full max-w-[340px] sm:max-w-[480px] md:max-w-[560px] lg:max-w-[620px]
+                          h-auto object-contain select-none"
                draggable={false} />
         </motion.div>
 

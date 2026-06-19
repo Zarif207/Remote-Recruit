@@ -17,38 +17,40 @@ const faqs = [
 ];
 
 const FAQ = () => (
-  <section className="w-full bg-white pt-[140px] pb-0">
-    <div className="max-w-[850px] mx-auto px-6 lg:px-0">
+  <section className="w-full bg-white py-[80px] lg:py-[100px]">
+    <div className="max-w-[850px] mx-auto px-[16px]">
 
-      <h2 className="text-[#11142D] font-bold
-                     text-[36px] md:text-[48px]
-                     text-center leading-[1.08] mb-[64px]">
+      <h2
+        className="text-[#11142D] font-bold
+                   text-[36px] md:text-[48px] lg:text-[52px]
+                   text-left leading-[1.15] tracking-[-0.01em]
+                   mb-12 lg:mb-14"
+      >
         Common Questions
       </h2>
 
-      <div className="flex flex-col">
+      <div className="flex flex-col gap-10 lg:gap-12">
         {faqs.map((item, i) => (
-          <div key={i}
-               className="pb-[40px] mb-[40px] border-b border-[#E8EAF0] last:border-b-0 last:pb-0 last:mb-0">
+          <div key={i}>
             <h3 className="text-[#11142D] font-bold text-[22px] leading-snug">
               {item.question}
             </h3>
-            <p className="text-[#6B7088] text-[18px] leading-[1.9] mt-[14px]">
+            <p className="text-[#6B7088] text-[17px] leading-[1.85] mt-3">
               {item.answer}
             </p>
           </div>
         ))}
       </div>
 
-      <div className="flex justify-center mt-[56px]">
-        <button className="border-2 border-[#4B6BFB] text-[#4B6BFB]
-                           rounded-full px-[36px] py-[14px]
-                           text-[16px] font-semibold
-                           hover:bg-[#4B6BFB] hover:text-white
-                           transition-all duration-200 cursor-pointer">
-          More Questions
-        </button>
-      </div>
+      <button
+        type="button"
+        className="mt-12 lg:mt-14 border border-[#C4EDFF] text-[#1B3B66]
+                   bg-white rounded-xl px-9 py-3.5
+                   text-base font-semibold
+                   hover:bg-[#C4EDFF]/20 transition-all duration-200 cursor-pointer"
+      >
+        More Questions
+      </button>
 
     </div>
   </section>

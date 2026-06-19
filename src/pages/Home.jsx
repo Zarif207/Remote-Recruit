@@ -5,7 +5,6 @@ import FeatureFee      from "../components/FeatureSection/FeatureFee";
 import FeatureShowcase from "../components/FeatureSection/FeatureShowcase";
 import CTA             from "../components/CTA/CTA";
 import FAQ             from "../components/FAQ/FAQ";
-import Pricing         from "../components/Pricing/Pricing";
 import Footer          from "../components/Footer/Footer";
 
 const Home = () => (
@@ -17,7 +16,6 @@ const Home = () => (
     <FeatureShowcase />
     <CTA />
     <FAQ />
-    <Pricing />
     <Footer />
   </>
 );

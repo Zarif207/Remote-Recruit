@@ -1,0 +1,32 @@
+<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20.000000" height="20.000000" fill="none" customFrame="#000000">
+	<defs>
+		<linearGradient id="paint_linear_31" x1="-9.26242924" x2="11.6681261" y1="12.4383078" y2="31.6576118" gradientUnits="userSpaceOnUse">
+			<stop stop-color="rgb(86.785,218,82)" offset="0" stop-opacity="1" />
+			<stop stop-color="rgb(30,133,80.1597)" offset="1" stop-opacity="1" />
+		</linearGradient>
+		<linearGradient id="paint_linear_32" x1="-9.26242924" x2="11.6681261" y1="12.4383078" y2="31.6576118" gradientUnits="userSpaceOnUse">
+			<stop stop-color="rgb(162.074,163.341,183.6)" offset="0" stop-opacity="1" />
+			<stop stop-color="rgb(128,129,145)" offset="0.999762714" stop-opacity="1" />
+		</linearGradient>
+		<g id="pixso_custom_effect_28">
+			<effect x="0.000000" y="2.000000" visibility="visible" fill="rgb(0,0,0)" fill-opacity="0.230622411" effectType="dropShadow" showShadowBehind="1" stdDeviation="2" radius="0" />
+		</g>
+		<filter id="filter_28" width="13.996490" height="13.998047" x="3.002411" y="5.001953" filterUnits="userSpaceOnUse" customEffect="url(#pixso_custom_effect_28)" color-interpolation-filters="sRGB">
+			<feFlood flood-opacity="0" result="BackgroundImageFix" />
+			<feOffset dx="0.000000" dy="2.000000" in="SourceAlpha" />
+			<feGaussianBlur stdDeviation="0.666666687" />
+			<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.230622 0 " />
+			<feBlend result="effect_dropShadow_1" in2="BackgroundImageFix" mode="normal" />
+			<feBlend result="shape" in="SourceGraphic" in2="effect_dropShadow_1" mode="normal" />
+		</filter>
+	</defs>
+	<g id="Active Icon">
+		<circle id="Oval" cx="10" cy="10" r="10" fill="rgb(215.985,215.985,215.985)" fill-opacity="0" />
+		<circle id="Oval" cx="10" cy="10" r="10" fill="url(#paint_linear_31)" fill-opacity="0" />
+		<circle id="Oval" cx="10" cy="10" r="10" fill="url(#paint_linear_32)" />
+		<circle id="Oval" cx="10" cy="10" r="10" stroke="rgb(150.96,150.96,150.96)" stroke-opacity="0" stroke-width="0.000000" />
+		<g filter="url(#filter_28)">
+			<path id="Combined Shape" d="M6.61534 5.21171C6.22308 4.90665 5.65584 4.93433 5.29534 5.29479C4.90478 5.68527 4.90472 6.31845 5.29522 6.70899L8.58654 10.0009L5.29522 13.2927L5.21204 13.3869C4.90704 13.7792 4.93482 14.3465 5.29534 14.7069C5.68588 15.0974 6.31906 15.0974 6.70954 14.7068L10.0006 11.4152L13.2917 14.7068L13.3859 14.79C13.7782 15.0951 14.3454 15.0674 14.7059 14.7069C15.0965 14.3164 15.0965 13.6833 14.706 13.2927L11.4147 10.0009L14.706 6.70899L14.7892 6.61479C15.0942 6.22247 15.0664 5.65523 14.7059 5.29479C14.3154 4.90429 13.6822 4.90435 13.2917 5.29491L10.0006 8.58653L6.70954 5.29491L6.61534 5.21171Z" fill="rgb(255,255,255)" fill-rule="evenodd" />
+		</g>
+	</g>
+</svg>

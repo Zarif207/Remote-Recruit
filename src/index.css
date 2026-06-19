@@ -13,9 +13,24 @@ html {
 body {
   margin: 0;
   overflow-x: hidden;
+  font-family: 'Poppins', sans-serif;
 }
 
 img {
   display: block;
   max-width: 100%;
+}
+
+@keyframes feature-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@theme {
+  --animate-feature-float: feature-float 4s ease-in-out infinite;
 }

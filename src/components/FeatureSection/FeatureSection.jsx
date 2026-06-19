@@ -50,6 +50,7 @@ const FeatureSection = () => (
           className="w-full flex justify-center lg:justify-end"
         >
           <img src={Illustration} alt="RemoteRecruit platform"
+               loading="lazy"
                className="w-full max-w-[340px] sm:max-w-[480px] md:max-w-[560px] lg:max-w-[620px]
                           h-auto object-contain select-none"
                draggable={false} />

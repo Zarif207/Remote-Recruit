@@ -21,6 +21,7 @@ const FeatureFee = () => (
           className="w-full flex justify-center lg:justify-start order-1 lg:order-1"
         >
           <img src={FeeImg} alt="Fee-Free Premium membership illustration"
+               loading="lazy"
                className="w-full max-w-[320px] sm:max-w-[460px] md:max-w-[560px] lg:max-w-[620px]
                           h-auto object-contain select-none"
                draggable={false} />

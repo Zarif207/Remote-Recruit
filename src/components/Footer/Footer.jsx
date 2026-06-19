@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import Background from "../../assets/images/Background.png";
 import Logo from "../../assets/images/Logo.png";
 import RRIcon from "../../assets/images/RR Icon Logo.png";
@@ -44,9 +45,15 @@ function SocialBtn({ Icon, label, url }) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="flex h-9 w-9 shrink-0 items-center justify-center
-                 rounded-full bg-white/15 hover:bg-white/30 transition-colors duration-200
-                 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+      className="
+        flex h-9 w-9 shrink-0 items-center justify-center
+        rounded-full bg-white/15
+        hover:bg-white/30
+        transition-colors duration-200
+        focus-visible:outline-none
+        focus-visible:ring-2
+        focus-visible:ring-white
+      "
     >
       <Icon className="text-[14px] text-white" />
     </a>
@@ -71,9 +78,11 @@ const Footer = () => (
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 items-stretch">
 
         {/* Free */}
-        <div
+        <motion.div
+          whileHover={{ y: -6, boxShadow: "0 24px 64px rgba(17,20,45,0.16)" }}
+          transition={{ duration: 0.25, ease: "easeOut" }}
           className="flex flex-col sm:flex-row bg-white rounded-[20px] p-6 sm:p-8
-                     shadow-[0_16px_56px_rgba(17,20,45,0.10)]"
+                     shadow-[0_16px_56px_rgba(17,20,45,0.10)] cursor-default"
         >
           <div
             className="flex flex-col items-center justify-center
@@ -104,29 +113,49 @@ const Footer = () => (
                 </li>
               ))}
             </ul>
-            <button
-              type="button"
-              className="group relative overflow-hidden mt-6 w-full h-[56px]
-                         rounded-full border-2 border-[#1A3585] bg-white
-                         text-[#1A3585] text-[16px] font-bold
-                         transition-all duration-500 hover:border-transparent
-                         focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1A3585]"
-            >
-              <span
-                className="absolute inset-0 bg-gradient-to-r from-[#3471A9] to-[#23488C]
-                           opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-              />
-              <span className="relative z-10 transition-colors duration-500 group-hover:text-white">
-                Get Started
-              </span>
-            </button>
+            <div className="mt-6 rounded-full p-[2px] bg-gradient-to-r from-[#52B4DA] to-[#1E3E85]">
+  <button
+    type="button"
+    className="
+      group relative overflow-hidden
+      w-full h-[56px]
+      rounded-full
+      bg-white
+      text-[#1A3585]
+      text-[16px]
+      font-bold
+      transition-all duration-500
+      focus-visible:outline-none
+      focus-visible:ring-2
+      focus-visible:ring-[#1A3585]
+    "
+  >
+    <span
+      className="
+        absolute inset-0
+        bg-gradient-to-r
+        from-[#3471A9]
+        to-[#23488C]
+        opacity-0
+        transition-opacity
+        duration-500
+        group-hover:opacity-100
+      "
+    />
+    <span className="relative z-10 transition-colors duration-500 group-hover:text-white">
+      Get Started
+    </span>
+  </button>
+</div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Premium */}
-        <div
+        <motion.div
+          whileHover={{ y: -6, boxShadow: "0 24px 64px rgba(17,20,45,0.18)" }}
+          transition={{ duration: 0.25, ease: "easeOut" }}
           className="flex flex-col sm:flex-row bg-white rounded-[20px] p-6 sm:p-8
-                     shadow-[0_16px_56px_rgba(17,20,45,0.12)]"
+                     shadow-[0_16px_56px_rgba(17,20,45,0.12)] cursor-default"
         >
           <div
             className="relative flex flex-col items-center justify-center
@@ -169,7 +198,7 @@ const Footer = () => (
               Get Started
             </button>
           </div>
-        </div>
+        </motion.div>
 
       </div>
     </div>
@@ -215,7 +244,7 @@ const Footer = () => (
           </div>
         </div>
 
-        <div className="mt-8 sm:mt-10 lg:mt-14 w-full max-w-[1140px] border-t border-white/20" />
+        <div className="mt-8 sm:mt-10 lg:mt-14 w-full max-w-[2040px] border-t border-white/20" />
 
         <div className="mt-6 lg:mt-8 flex flex-col items-center">
           <button

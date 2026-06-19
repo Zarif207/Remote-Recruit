@@ -7,14 +7,13 @@ const Hero = () => (
                min-h-[480px] sm:min-h-[560px] md:min-h-[640px] lg:min-h-[760px] xl:h-[820px]"
     aria-labelledby="hero-heading"
   >
-    {/* Background */}
-    <img
-      src={HeroBg}
-      alt=""
-      aria-hidden="true"
-      className="absolute inset-0 w-full h-full object-cover object-[center_top]
-                 pointer-events-none select-none"
-    />
+      <img
+        src={HeroBg}
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 w-full h-full object-cover object-[center_top]
+                   pointer-events-none select-none"
+      />
 
     {/* Decorative circles — tablet+ only */}
     <div

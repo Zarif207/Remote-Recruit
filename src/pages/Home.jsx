@@ -6,6 +6,7 @@ import FeatureShowcase from "../components/FeatureSection/FeatureShowcase";
 import CTA             from "../components/CTA/CTA";
 import FAQ             from "../components/FAQ/FAQ";
 import Footer          from "../components/Footer/Footer";
+import ScrollTop       from "../components/ScrollTop/ScrollTop";
 
 const Home = () => (
   <div id="top">
@@ -17,6 +18,7 @@ const Home = () => (
     <CTA />
     <FAQ />
     <Footer />
+    <ScrollTop />
   </div>
 );
 

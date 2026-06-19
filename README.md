@@ -109,6 +109,7 @@ text src/
 
 ---
 
+
 ## Author
 
 Developed as part of a Front-End Development assessment, focusing on design fidelity, responsiveness, accessibility, and modern React development practices.

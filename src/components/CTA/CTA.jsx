@@ -1,83 +1,54 @@
-import FindWork from "../../assets/images/Find Work.png";
+import CTAImg from "../../assets/images/CTA.png";
 import { FaArrowRight } from "react-icons/fa";
 
 const CTA = () => (
-  <section className="relative w-full overflow-hidden bg-[#EEF0FF] pt-[180px] pb-0">
+  <section className="relative w-screen max-w-none">
+    <div className="relative w-full max-w-none">
+      <img
+        src={CTAImg}
+        alt="RemoteRecruit dashboard"
+        className="block w-full max-w-none h-auto select-none"
+        draggable={false}
+      />
 
-    {/* Decorative circles — top-right */}
-    <div aria-hidden="true"
-         className="pointer-events-none absolute -top-[120px] -right-[120px]
-                    w-[520px] h-[520px] rounded-full
-                    bg-[#C5D0FF] opacity-40" />
-    <div aria-hidden="true"
-         className="pointer-events-none absolute top-[60px] right-[80px]
-                    w-[260px] h-[260px] rounded-full
-                    bg-[#B8C8FF] opacity-30" />
+      {/* Text overlaid on the right side of CTA.png */}
+      <div
+        className="px-[5vw] py-10
+                   lg:absolute lg:right-[7%] lg:top-1/2 lg:-translate-y-1/2
+                   lg:w-[38%] lg:max-w-[440px] lg:px-0 lg:py-0"
+      >
+        <p className="text-[#4B6BFB] text-base font-semibold mb-3">
+          Are you ready?
+        </p>
 
-    {/* Decorative circle — bottom-left */}
-    <div aria-hidden="true"
-         className="pointer-events-none absolute -bottom-[120px] -left-[120px]
-                    w-[400px] h-[400px] rounded-full
-                    bg-[#C5D0FF] opacity-30" />
+        <h2
+          className="text-[#11142D] font-extrabold
+                     text-[36px] lg:text-[64px]
+                     leading-[1.05] tracking-[-0.02em]"
+        >
+          Help is only a few clicks away!
+        </h2>
 
-    {/* Decorative circle — bottom-right */}
-    <div aria-hidden="true"
-         className="pointer-events-none absolute bottom-[40px] right-[120px]
-                    w-[28px] h-[28px] rounded-full
-                    bg-gradient-to-br from-[#5BC8FF] to-[#1A5DC8]" />
+        <p className="text-[#6B7088] text-[18px] lg:text-[20px] leading-[1.8] mt-7">
+          Click below to get set up super quickly and find help now!
+        </p>
 
-    <div className="relative z-10 max-w-[1140px] mx-auto px-6 lg:px-0">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-[80px] items-center">
-
-        {/* LEFT — dashboard image */}
-        <div className="relative flex justify-center lg:justify-start order-2 lg:order-1">
-
-          {/* Gold circle above dashboard */}
-          <div aria-hidden="true"
-               className="absolute -top-[32px] left-[50%] -translate-x-1/2
-                          w-[64px] h-[64px] rounded-full
-                          bg-[#F5C242]
-                          shadow-[0_8px_28px_rgba(245,194,66,0.45)]
-                          z-10" />
-
-          <img
-            src={FindWork}
-            alt="Find Work dashboard"
-            className="relative z-0 w-full max-w-[560px]
-                       rounded-[24px]
-                       shadow-[0_24px_80px_rgba(58,77,163,0.20)]"
-          />
-        </div>
-
-        {/* RIGHT — text */}
-        <div className="flex flex-col items-start order-1 lg:order-2">
-          <p className="text-[#4B6BFB] text-[16px] font-semibold mb-[12px]">
-            Are you ready?
-          </p>
-          <h2 className="text-[#11142D] font-bold
-                         text-[32px] sm:text-[40px] lg:text-[56px]
-                         leading-[1.15] lg:leading-[1.08] tracking-[-0.02em]
-                         max-w-[460px] mb-0">
-            Help is only a few clicks away!
-          </h2>
-          <p className="text-[#6B7088] text-[18px] leading-[1.9]
-                        max-w-[400px] mt-[28px]">
-            Click Below to get set up super quickly and find help now!
-          </p>
-          <button className="mt-[36px] inline-flex items-center gap-[12px]
-                             bg-gradient-to-r from-[#4B6BFB] to-[#2B4FCC]
-                             text-white font-semibold text-[16px]
-                             rounded-full px-[32px] py-[16px]
-                             hover:brightness-110 transition-all duration-200
-                             shadow-[0_8px_28px_rgba(75,107,251,0.35)] cursor-pointer">
-            <span className="w-[36px] h-[36px] rounded-full bg-white/20
-                             flex items-center justify-center">
-              <FaArrowRight className="text-[14px]" />
-            </span>
-            Get Started
-          </button>
-        </div>
-
+        <button
+          type="button"
+          className="mt-9 inline-flex items-center gap-4
+                     bg-[#C4EDFF] text-[#1B3B66]
+                     rounded-full pl-2 pr-8 py-2
+                     text-base font-semibold
+                     hover:brightness-95 transition-all duration-200 cursor-pointer"
+        >
+          <span
+            className="w-11 h-11 rounded-full bg-[#2F4668]
+                       flex items-center justify-center shrink-0"
+          >
+            <FaArrowRight className="text-white text-sm" />
+          </span>
+          Get Started
+        </button>
       </div>
     </div>
   </section>

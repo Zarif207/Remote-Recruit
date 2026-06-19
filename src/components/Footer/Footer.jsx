@@ -36,24 +36,26 @@ const socialLinks = [
   { Icon: FaSnapchatGhost, label: "Snapchat" },
 ];
 
-const SocialBtn = ({ Icon, label }) => (
-  <a
-    href="#"
-    aria-label={label}
-    className="flex h-9 w-9 shrink-0 items-center justify-center
-               rounded-full bg-white/15 hover:bg-white/30 transition-colors duration-200"
-  >
-    <Icon className="text-[14px] text-white" />
-  </a>
-);
+function SocialBtn({ Icon, label }) {
+  return (
+    <a
+      href="#"
+      aria-label={label}
+      className="flex h-9 w-9 shrink-0 items-center justify-center
+                 rounded-full bg-white/15 hover:bg-white/30 transition-colors duration-200"
+    >
+      <Icon className="text-[14px] text-white" />
+    </a>
+  );
+}
 
 const Footer = () => (
   <section className="relative w-full overflow-hidden bg-white">
 
     {/* Heading */}
     <h2
-      className="text-[#11142D] font-bold text-[40px] md:text-[48px]
-                 leading-[1.08] text-center pt-16 lg:pt-20
+      className="text-[#11142D] font-normal text-[40px] md:text-[48px]
+                 leading-[1.08] text-center pt-36 lg:pt-20
                  mb-10 lg:mb-14 px-4"
     >
       Help Is One Click Away
@@ -158,7 +160,7 @@ const Footer = () => (
     </div>
 
     {/* Blue footer */}
-    <footer className="relative z-10 w-full">
+    <footer className="relative z-10 w-full pt-[100px] lg:pt-[250px]">
 
       <img
         src={Background}
@@ -169,7 +171,7 @@ const Footer = () => (
         draggable={false}
       />
 
-      <div className="relative flex flex-col items-center w-full pt-[250px] pb-14 px-6 lg:px-10">
+      <div className="relative flex flex-col items-center w-full pt-[120px] pb-5 px-6 lg:px-10">
 
         {/* Logo + socials */}
         <div className="mx-auto flex w-full max-w-[1140px] items-center justify-between gap-4">
@@ -186,18 +188,15 @@ const Footer = () => (
         </div>
 
         {/* Divider */}
-        <div className="mt-10 lg:mt-14 w-full max-w-[1140px] border-t border-white/20" />
+        <div className="mt-10 lg:mt-14 w-full w-[1440px] border-t border-white/20" />
 
-        {/* RR icon + copyright */}
-        <div className="mt-8 flex flex-col items-center gap-2">
+        {/* RR icon */}
+        <div className="mt-8 flex flex-col items-center">
           <img
             src={RRIcon}
             alt="RemoteRecruit"
             className="h-7 w-9 object-contain lg:h-8 lg:w-10"
           />
-          <p className="text-center text-[12px] text-white/50 lg:text-[13px]">
-            &copy; 2026 RemoteRecruit. All rights reserved.
-          </p>
         </div>
 
       </div>

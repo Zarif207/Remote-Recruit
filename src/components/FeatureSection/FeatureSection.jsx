@@ -1,54 +1,31 @@
 import Illustration from "../../assets/images/Group 136.png";
 
 const FeatureSection = () => (
-  <section className="w-full bg-white pt-[100px] pb-[100px] overflow-hidden">
-    <div className="max-w-[1200px] mx-auto px-[16px]">
+  <section className="w-full bg-white pt-[60px] pb-[60px] lg:pt-[100px] lg:pb-[100px] overflow-hidden">
+    <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
+      <div className="grid grid-cols-1 lg:grid-cols-[500px_620px] items-center gap-y-12 lg:gap-y-0 gap-x-[100px]">
 
-      <div className="grid lg:grid-cols-[500px_620px] items-center gap-x-[100px]">
-
-        {/* LEFT */}
-        <div>
+        <div className="lg:-ml-[30px]">
 
           <span
-            className="
-              inline-flex items-center
-              px-5 py-2.5
-              rounded-full
-              bg-[#CFEFFF]
-              text-[#1B3B66]
-              text-[14px]
-              font-bold
-              mb-7
-            "
+            className="inline-flex items-center px-5 py-2.5 rounded-full
+                       bg-[#CFEFFF] text-[#1B3B66] text-[14px] font-bold mb-7"
           >
             Global Reach
           </span>
 
           <h2
-            className="
-              w-[480px]
-              text-[#11142D]
-              text-[52px]
-              font-normal
-              leading-[1.15]
-              tracking-[-0.01em]
-              font-rounded
-              whitespace-nowrap
-            "
+            className="max-w-[480px] w-full text-[#11142D]
+                       text-[32px] sm:text-[40px] lg:text-[52px]
+                       font-normal leading-[1.15] tracking-[-0.01em]"
           >
             <span className="block">The First Fully Global Job</span>
             <span className="block">Board, Anywhere, Ever</span>
           </h2>
 
           <p
-            className="
-              mt-7
-              max-w-[480px]
-              text-[#6B7088]
-              text-[17px]
-              leading-[1.85]
-              font-normal
-            "
+            className="mt-7 max-w-[480px] w-full text-[#6B7088] text-[17px]
+                       leading-[1.85] font-normal"
           >
             RemoteRecruit connects candidates with opportunities around the
             world. With today&rsquo;s remote-first workforce, you need to be
@@ -58,25 +35,16 @@ const FeatureSection = () => (
 
         </div>
 
-        {/* RIGHT */}
-        <div className="flex justify-end">
-
+        <div className="flex justify-center lg:justify-end">
           <img
             src={Illustration}
             alt="RemoteRecruit platform"
-            className="
-              w-[620px]
-              h-auto
-              object-contain
-              select-none
-            "
+            className="w-full max-w-[620px] h-auto object-contain select-none"
             draggable={false}
           />
-
         </div>
 
       </div>
-
     </div>
   </section>
 );

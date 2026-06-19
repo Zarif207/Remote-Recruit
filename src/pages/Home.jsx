@@ -8,7 +8,7 @@ import FAQ             from "../components/FAQ/FAQ";
 import Footer          from "../components/Footer/Footer";
 
 const Home = () => (
-  <>
+  <div id="top">
     <Navbar />
     <Hero />
     <FeatureSection />
@@ -17,7 +17,7 @@ const Home = () => (
     <CTA />
     <FAQ />
     <Footer />
-  </>
+  </div>
 );
 
 export default Home;

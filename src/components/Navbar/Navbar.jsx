@@ -1,9 +1,18 @@
 import { useState, useEffect, useRef } from "react";
 import Logo from "../../assets/images/Logo.png";
+import { scrollToTop } from "../../utils/scrollToTop";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const navRef = useRef(null);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     const onOutsideClick = (e) => {
@@ -21,51 +30,39 @@ const Navbar = () => {
     return () => document.removeEventListener("keydown", onKey);
   }, []);
 
-  return (
-    <header ref={navRef} className="absolute top-0 left-0 w-full z-50">
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
 
-      {/*
-        Desktop nav rail
-        ─────────────────────────────────────────────────────────────────
-        pl-12  = 48px left  (logo 48px from left edge — spec)
-        pr-12  = 48px right (right items 48px from right edge — spec)
-        pt-8   = 32px top   (navbar 32px from top — spec)
-        pb-4   keeps the row a natural height without extra bottom gap
-      */}
+  return (
+    <header
+      ref={navRef}
+      className={`sticky top-0 left-0 w-full z-[9999] transition-shadow duration-300 ${
+        scrolled ? "shadow-[0_4px_24px_rgba(0,0,0,0.18)] bg-[#0d1f4e]/95 backdrop-blur-sm" : ""
+      }`}
+    >
       <div className="w-full pl-4 pr-4 sm:pl-8 sm:pr-8 lg:pl-12 lg:pr-12">
         <nav
           className="flex items-center justify-between pt-8 pb-4"
           aria-label="Main navigation"
         >
-
-          {/* ── Logo ────────────────────────────────────────────────────
-              w-[150px] — spec value (was 145px, reduced to 150px per spec)
-              h-auto    — preserves aspect ratio, no distortion
-          ──────────────────────────────────────────────────────────── */}
-          <a
-            href="/"
-            aria-label="RemoteRecruit home"
-            className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded shrink-0"
+          <button
+            type="button"
+            onClick={scrollToTop}
+            aria-label="RemoteRecruit home — scroll to top"
+            className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded shrink-0 cursor-pointer bg-transparent border-0 p-0"
           >
             <img
               src={Logo}
               alt="RemoteRecruit logo"
-              className="w-[150px] h-auto object-contain"
+              className="w-[130px] sm:w-[150px] h-auto object-contain"
             />
-          </a>
+          </button>
 
-          {/* ── Desktop: Sign In + Sign Up ────────────────────────────
-              gap-4 gives tight spacing between the two items matching
-              the Figma — they sit close together on the right.
-          ──────────────────────────────────────────────────────────── */}
           <div className="hidden md:flex items-center gap-4">
-
-            {/*
-              Sign In
-              · text-[16px] font-medium — spec
-              · No background, plain white text link
-              · hover:opacity-75 = subtle interaction
-            */}
             <a
               href="#signin"
               className="text-white font-medium hover:opacity-75
@@ -76,14 +73,6 @@ const Navbar = () => {
               Sign In
             </a>
 
-            {/*
-              Sign Up button
-              · w-[106px] h-[52px]    — exact spec dimensions
-              · rounded-[18px]        — spec border-radius (not fully pill)
-              · bg-[#63C7E9]          — teal from Figma
-              · text-[16px] font-medium — spec
-              · flex + center         — text centred inside fixed box
-            */}
             <a
               href="#signup"
               className="flex items-center justify-center
@@ -98,7 +87,6 @@ const Navbar = () => {
             </a>
           </div>
 
-          {/* ── Mobile hamburger ─────────────────────────────────────── */}
           <button
             className="md:hidden flex flex-col justify-center items-center
                        w-10 h-10 gap-[5px]
@@ -109,29 +97,47 @@ const Navbar = () => {
             aria-controls="mobile-menu"
             onClick={() => setMenuOpen((v) => !v)}
           >
-            <span className={`block w-6 h-0.5 bg-white transition-all duration-300 origin-center
-                              ${menuOpen ? "rotate-45 translate-y-[7px]" : ""}`} />
-            <span className={`block w-6 h-0.5 bg-white transition-all duration-300
-                              ${menuOpen ? "opacity-0 scale-x-0" : ""}`} />
-            <span className={`block w-6 h-0.5 bg-white transition-all duration-300 origin-center
-                              ${menuOpen ? "-rotate-45 -translate-y-[7px]" : ""}`} />
+            <span
+              className={`block w-6 h-0.5 bg-white transition-all duration-300 origin-center
+                          ${menuOpen ? "rotate-45 translate-y-[7px]" : ""}`}
+            />
+            <span
+              className={`block w-6 h-0.5 bg-white transition-all duration-300
+                          ${menuOpen ? "opacity-0 scale-x-0" : ""}`}
+            />
+            <span
+              className={`block w-6 h-0.5 bg-white transition-all duration-300 origin-center
+                          ${menuOpen ? "-rotate-45 -translate-y-[7px]" : ""}`}
+            />
           </button>
         </nav>
       </div>
 
-      {/* ── Mobile drawer ────────────────────────────────────────────── */}
+      {menuOpen && (
+        <div
+          className="md:hidden fixed inset-0 top-[72px] z-40 bg-black/40"
+          aria-hidden="true"
+          onClick={() => setMenuOpen(false)}
+        />
+      )}
+
       <div
         id="mobile-menu"
-        role="region"
+        role="dialog"
+        aria-modal="true"
         aria-label="Mobile navigation"
-        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out
-                    ${menuOpen ? "max-h-40 opacity-100" : "max-h-0 opacity-0"}`}
+        className={`md:hidden fixed top-[72px] left-0 right-0 z-50
+                    bg-[#0d1f4e]/98 backdrop-blur-sm
+                    transition-all duration-300 ease-in-out
+                    ${menuOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"}`}
       >
-        <div className="px-6 pb-6 flex flex-col gap-4">
+        <div className="px-6 py-6 flex flex-col gap-4">
           <a
             href="#signin"
             className="text-white text-[16px] font-medium hover:opacity-75
-                       transition-opacity duration-200"
+                       transition-opacity duration-200
+                       focus-visible:outline-none focus-visible:ring-2
+                       focus-visible:ring-white rounded px-1 py-1"
             onClick={() => setMenuOpen(false)}
           >
             Sign In
@@ -141,14 +147,15 @@ const Navbar = () => {
             className="flex items-center justify-center
                        w-[106px] h-[44px] rounded-[18px]
                        bg-[#63C7E9] text-white text-[16px] font-medium
-                       transition-all duration-200 hover:brightness-110"
+                       transition-all duration-200 hover:brightness-110
+                       focus-visible:outline-none focus-visible:ring-2
+                       focus-visible:ring-white"
             onClick={() => setMenuOpen(false)}
           >
             Sign Up
           </a>
         </div>
       </div>
-
     </header>
   );
 };

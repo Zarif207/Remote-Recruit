@@ -11,7 +11,7 @@ const Hero = () => {
     */
     <section
       className="relative w-full overflow-hidden
-                 h-auto min-h-[500px] md:h-[820px]"
+                 h-auto min-h-[480px] sm:min-h-[500px] md:h-[820px]"
       aria-labelledby="hero-heading"
     >
 
@@ -67,7 +67,8 @@ const Hero = () => {
           relative z-10 w-full h-full
           flex flex-col items-center justify-center
           px-4 sm:px-8
-          pt-28 pb-20
+          pt-24 pb-16
+          sm:pt-28 sm:pb-20
           md:pt-0 md:pb-0
         "
       >
@@ -102,10 +103,10 @@ const Hero = () => {
           <h1
             id="hero-heading"
             className="text-white font-bold
-                       text-[36px] sm:text-[48px] md:text-[78px]
+                       text-[32px] sm:text-[48px] md:text-[78px]
                        leading-[1.05] tracking-[-0.03em]
                        md:whitespace-nowrap
-                       mb-[36px]"
+                       mb-6 sm:mb-[36px] px-2"
           >
             RemoteRecruit&rsquo;s Difference
           </h1>

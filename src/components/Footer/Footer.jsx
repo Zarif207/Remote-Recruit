@@ -12,6 +12,7 @@ import {
   FaSnapchatGhost,
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import { scrollToTop } from "../../utils/scrollToTop";
 
 const freeFeatures = [
   { label: "1 Active Job", ok: true },
@@ -28,21 +29,24 @@ const premiumFeatures = [
 ];
 
 const socialLinks = [
-  { Icon: FaFacebookF, label: "Facebook" },
-  { Icon: FaInstagram, label: "Instagram" },
-  { Icon: FaXTwitter, label: "X" },
-  { Icon: FaTwitter, label: "Twitter" },
-  { Icon: FaLinkedinIn, label: "LinkedIn" },
-  { Icon: FaSnapchatGhost, label: "Snapchat" },
+  { Icon: FaFacebookF, label: "Facebook", url: "https://www.facebook.com" },
+  { Icon: FaInstagram, label: "Instagram", url: "https://www.instagram.com" },
+  { Icon: FaXTwitter, label: "X", url: "https://x.com" },
+  { Icon: FaTwitter, label: "Twitter", url: "https://twitter.com" },
+  { Icon: FaLinkedinIn, label: "LinkedIn", url: "https://www.linkedin.com" },
+  { Icon: FaSnapchatGhost, label: "Snapchat", url: "https://www.snapchat.com" },
 ];
 
-function SocialBtn({ Icon, label }) {
+function SocialBtn({ Icon, label, url }) {
   return (
     <a
-      href="#"
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
       aria-label={label}
       className="flex h-9 w-9 shrink-0 items-center justify-center
-                 rounded-full bg-white/15 hover:bg-white/30 transition-colors duration-200"
+                 rounded-full bg-white/15 hover:bg-white/30 transition-colors duration-200
+                 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
     >
       <Icon className="text-[14px] text-white" />
     </a>
@@ -52,28 +56,29 @@ function SocialBtn({ Icon, label }) {
 const Footer = () => (
   <section className="relative w-full overflow-hidden bg-white">
 
-    {/* Heading */}
     <h2
-      className="text-[#11142D] font-normal text-[40px] md:text-[48px]
-                 leading-[1.08] text-center pt-36 lg:pt-20
-                 mb-10 lg:mb-14 px-4"
+      className="text-[#11142D] font-normal text-[32px] sm:text-[40px] md:text-[48px]
+                 leading-[1.08] text-center pt-20 sm:pt-28 lg:pt-20
+                 mb-8 sm:mb-10 lg:mb-14 px-4"
     >
       Help Is One Click Away
     </h2>
 
-    {/* Pricing cards — overlap blue footer below */}
-    <div className="relative z-30 max-w-[1140px] mx-auto px-4 lg:px-6 -mb-[220px]">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 items-stretch">
+    <div
+      className="relative z-30 max-w-[1140px] mx-auto px-4 lg:px-6
+                 -mb-[100px] sm:-mb-[140px] md:-mb-[180px] lg:-mb-[220px]"
+    >
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 items-stretch">
 
         {/* Free */}
         <div
-          className="flex bg-white rounded-[20px] p-8
+          className="flex flex-col sm:flex-row bg-white rounded-[20px] p-6 sm:p-8
                      shadow-[0_16px_56px_rgba(17,20,45,0.10)]"
         >
           <div
             className="flex flex-col items-center justify-center
                        bg-[#EEF2FF] rounded-[14px]
-                       min-w-[140px] px-4 py-5 mr-6 shrink-0"
+                       w-full sm:min-w-[140px] sm:w-auto px-4 py-5 sm:mr-6 shrink-0 mb-5 sm:mb-0"
           >
             <p className="text-[#4B6BFB] text-[36px] font-bold leading-none">Free</p>
             <p className="text-[#6B7088] text-[16px] mt-2">Basic</p>
@@ -90,7 +95,7 @@ const Footer = () => (
                     className="w-[20px] h-[20px] shrink-0 mt-0.5"
                   />
                   <span
-                    className={`text-[15px] leading-snug ${
+                    className={`text-[15px] leading-snug break-words ${
                       f.ok ? "text-[#11152D]" : "text-[#C8CCDA]"
                     }`}
                   >
@@ -101,24 +106,32 @@ const Footer = () => (
             </ul>
             <button
               type="button"
-              className="mt-6 w-full h-[56px] border-2 border-[#1A3585] text-[#1A3585]
-                         rounded-[14px] text-[16px] font-bold
-                         hover:bg-[#1A3585] hover:text-white transition-colors duration-200"
+              className="group relative overflow-hidden mt-6 w-full h-[56px]
+                         rounded-[14px] border-2 border-[#1A3585] bg-white
+                         text-[#1A3585] text-[16px] font-bold
+                         transition-all duration-500 hover:border-transparent
+                         focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1A3585]"
             >
-              Get Started
+              <span
+                className="absolute inset-0 bg-gradient-to-r from-[#3471A9] to-[#23488C]
+                           opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+              />
+              <span className="relative z-10 transition-colors duration-500 group-hover:text-white">
+                Get Started
+              </span>
             </button>
           </div>
         </div>
 
         {/* Premium */}
         <div
-          className="flex bg-white rounded-[20px] p-8
+          className="flex flex-col sm:flex-row bg-white rounded-[20px] p-6 sm:p-8
                      shadow-[0_16px_56px_rgba(17,20,45,0.12)]"
         >
           <div
             className="relative flex flex-col items-center justify-center
                        bg-[#EEF2FF] rounded-[14px]
-                       min-w-[140px] px-4 py-5 mr-6 shrink-0"
+                       w-full sm:min-w-[140px] sm:w-auto px-4 py-5 sm:mr-6 shrink-0 mb-5 sm:mb-0"
           >
             <img
               src={PremiumTag}
@@ -140,16 +153,18 @@ const Footer = () => (
                     aria-hidden="true"
                     className="w-[20px] h-[20px] shrink-0 mt-0.5"
                   />
-                  <span className="text-[15px] text-[#11152D] leading-snug">{label}</span>
+                  <span className="text-[15px] text-[#11152D] leading-snug break-words">
+                    {label}
+                  </span>
                 </li>
               ))}
             </ul>
             <button
               type="button"
-              className="mt-6 w-full h-[56px] text-white
-                         rounded-[14px] text-[16px] font-bold
-                         bg-gradient-to-r from-[#52B4DA] to-[#1E3E85]
-                         hover:brightness-110 transition-all duration-200"
+              className="mt-6 w-full h-[56px] text-white rounded-[14px] text-[16px] font-bold
+                         bg-gradient-to-r from-[#3471A9] to-[#23488C]
+                         hover:brightness-110 transition-all duration-300
+                         focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
             >
               Get Started
             </button>
@@ -159,8 +174,7 @@ const Footer = () => (
       </div>
     </div>
 
-    {/* Blue footer */}
-    <footer className="relative z-10 w-full pt-[100px] lg:pt-[250px]">
+    <footer className="relative z-10 w-full pt-[60px] sm:pt-[80px] lg:pt-[250px]">
 
       <img
         src={Background}
@@ -171,32 +185,52 @@ const Footer = () => (
         draggable={false}
       />
 
-      <div className="relative flex flex-col items-center w-full pt-[120px] pb-5 px-6 lg:px-10">
+      <div
+        className="relative flex flex-col items-center w-full
+                   pt-[80px] sm:pt-[100px] lg:pt-[120px] pb-8 lg:pb-5 px-4 sm:px-6 lg:px-10"
+      >
 
-        {/* Logo + socials */}
-        <div className="mx-auto flex w-full max-w-[1140px] items-center justify-between gap-4">
-          <img
-            src={Logo}
-            alt="RemoteRecruit"
-            className="h-auto w-[150px] shrink-0 object-contain lg:w-[160px]"
-          />
-          <div className="flex items-center gap-2.5">
-            {socialLinks.map(({ Icon, label }) => (
-              <SocialBtn key={label} Icon={Icon} label={label} />
+        <div
+          className="mx-auto flex w-full max-w-[1140px] flex-col items-center gap-6
+                     md:flex-row md:justify-between md:gap-4"
+        >
+          <button
+            type="button"
+            onClick={scrollToTop}
+            aria-label="RemoteRecruit home — scroll to top"
+            className="shrink-0 cursor-pointer bg-transparent border-0 p-0
+                       focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded"
+          >
+            <img
+              src={Logo}
+              alt="RemoteRecruit"
+              className="h-auto w-[150px] object-contain lg:w-[160px]"
+            />
+          </button>
+
+          <div className="flex flex-wrap items-center justify-center gap-2.5">
+            {socialLinks.map(({ Icon, label, url }) => (
+              <SocialBtn key={label} Icon={Icon} label={label} url={url} />
             ))}
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="mt-10 lg:mt-14 w-full w-[1440px] border-t border-white/20" />
+        <div className="mt-8 sm:mt-10 lg:mt-14 w-full max-w-[1140px] border-t border-white/20" />
 
-        {/* RR icon */}
-        <div className="mt-8 flex flex-col items-center">
-          <img
-            src={RRIcon}
-            alt="RemoteRecruit"
-            className="h-7 w-9 object-contain lg:h-8 lg:w-10"
-          />
+        <div className="mt-6 lg:mt-8 flex flex-col items-center">
+          <button
+            type="button"
+            onClick={scrollToTop}
+            aria-label="RemoteRecruit — scroll to top"
+            className="cursor-pointer bg-transparent border-0 p-0
+                       focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded"
+          >
+            <img
+              src={RRIcon}
+              alt="RemoteRecruit"
+              className="h-7 w-9 object-contain lg:h-8 lg:w-10"
+            />
+          </button>
         </div>
 
       </div>

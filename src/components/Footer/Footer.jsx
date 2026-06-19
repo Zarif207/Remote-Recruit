@@ -14,23 +14,40 @@ const socialIcons = [
 
 const Footer = () => {
   return (
-    <footer className="relative w-full bg-gradient-to-b from-[#1E3A8A] to-[#1A3070]
-                        py-[80px] overflow-hidden">
+    <footer className="relative w-full bg-[#111638] pt-[120px] pb-[60px] overflow-hidden">
 
       {/* Decorative circles — CSS only */}
       <div className="pointer-events-none absolute -top-40 -left-40
-                      w-[500px] h-[500px] rounded-full border border-white/10" />
+                      w-[500px] h-[500px] rounded-full border border-white/5" />
       <div className="pointer-events-none absolute -top-24 -right-24
-                      w-[400px] h-[400px] rounded-full border border-white/10" />
+                      w-[400px] h-[400px] rounded-full border border-white/5" />
+      <div className="pointer-events-none absolute bottom-[-100px] left-[20%]
+                      w-[300px] h-[300px] rounded-full border border-white/5" />
 
       <div className="relative z-10 max-w-[1140px] mx-auto px-6 lg:px-0">
 
-        {/* Logo left — social right */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-8">
+        {/* Bottom row containing Logo (left), Small logo & Copyright (center), Socials (right) */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8 mt-12 md:mt-24">
 
-          <img src={Logo} alt="RemoteRecruit" className="w-[160px] h-auto object-contain" />
+          {/* Bottom-left: RemoteRecruit logo */}
+          <div className="flex items-center justify-center md:justify-start shrink-0">
+            <img src={Logo} alt="RemoteRecruit" className="w-[160px] h-auto object-contain" />
+          </div>
 
-          <div className="flex items-center gap-3 flex-wrap justify-center">
+          {/* Center bottom: Small floating logo & Copyright */}
+          <div className="flex flex-col items-center justify-center gap-4">
+            <img
+              src={RRLogo}
+              alt="RR"
+              className="w-[48px] h-[48px] rounded-full object-contain shadow-[0_8px_24px_rgba(0,0,0,0.2)]"
+            />
+            <p className="text-center text-white/50 text-[14px]">
+              © {new Date().getFullYear()} RemoteRecruit. All rights reserved.
+            </p>
+          </div>
+
+          {/* Bottom-right: Social icons */}
+          <div className="flex items-center gap-3 flex-wrap justify-center md:justify-end">
             {socialIcons.map(({ Icon, label }) => (
               <a
                 key={label}
@@ -45,23 +62,8 @@ const Footer = () => {
               </a>
             ))}
           </div>
+
         </div>
-
-        {/* Divider */}
-        <div className="border-t border-white/10 mt-12 mb-10" />
-
-        {/* RR logo centered */}
-        <div className="flex justify-center">
-          <img
-            src={RRLogo}
-            alt="RR"
-            className="w-[60px] h-[60px] rounded-full object-contain"
-          />
-        </div>
-
-        <p className="text-center text-white/40 text-[13px] mt-6">
-          © {new Date().getFullYear()} RemoteRecruit. All rights reserved.
-        </p>
 
       </div>
     </footer>

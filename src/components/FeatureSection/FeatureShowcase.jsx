@@ -5,134 +5,131 @@ import { FaPlay } from "react-icons/fa";
 
 const skillTags = ["Python Dev", "Javascript", "Front End", "Back End", "IOS Development", "+12"];
 
-const FeatureShowcase = () => {
-  return (
-    <section className="w-full bg-white py-[100px] overflow-hidden">
-      <div className="max-w-[1140px] mx-auto px-6 lg:px-0">
+/* ─── Right illustration ──────────────────────────────────────────── */
+const ShowcaseIllustration = () => (
+  <div className="relative
+                  w-[286px] h-[330px]
+                  sm:w-[352px] sm:h-[406px]
+                  md:w-[418px] md:h-[482px]
+                  lg:w-[540px] lg:h-[622px]
+                  mx-auto lg:mx-0 overflow-visible">
+    <div className="absolute top-0 left-0 w-[540px] h-[622px] origin-top-left
+                    scale-[0.53] sm:scale-[0.652] md:scale-[0.774] lg:scale-[1]">
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-[80px] lg:gap-[100px] items-center">
+      {/* Blue dot — top-left */}
+      <div aria-hidden="true"
+           className="absolute top-[10px] left-[46px] z-10
+                      w-[20px] h-[20px] rounded-full
+                      bg-gradient-to-br from-[#5BC8FF] to-[#1A5DC8]" />
 
-          {/* ── LEFT — text ─────────────────────────────────────── */}
-          <div className="flex flex-col items-start">
+      {/* Floating avatar — right side */}
+      <div className="absolute top-[64px] right-[-20px] z-30
+                      w-[84px] h-[84px] rounded-full overflow-hidden
+                      ring-[3px] ring-[#F5C542]
+                      shadow-[0_6px_24px_rgba(50,100,220,0.22)]">
+        <img src={AvatarGru} alt="Profile"
+             className="w-full h-full object-cover object-top" />
+      </div>
 
-            <span className="inline-flex items-center
-                             py-[7px] px-[20px] rounded-full
-                             bg-[#C4EDFF] text-[#2F4668]
-                             text-[14px] font-semibold mb-[20px]">
-              Custom Profile
-            </span>
+      {/* Main profile card */}
+      <div className="absolute top-[30px] left-[30px] z-0
+                      w-[460px] rounded-[28px] overflow-hidden
+                      bg-white shadow-[0_20px_60px_rgba(80,100,220,0.12)]">
 
-            <h2 className="text-[#11152D] font-bold
-                           text-[40px] md:text-[48px]
-                           leading-[1.1] mb-0">
-              Showcase Your Talents
-            </h2>
+        {/* Banner */}
+        <div className="relative">
+          <img src={ProfileBanner} alt="Profile banner"
+               className="w-full h-[150px] object-cover" />
 
-            <p className="text-[#73758B] font-normal
-                          text-[16px] leading-[1.85]
-                          max-w-[420px] mt-[28px]">
-              Personalize your profile with everything that makes you unique.
-              Add an introductory video and other media for a personal touch
-              that stands out to employers and candidates.
-            </p>
+          {/* Jobs badge */}
+          <span className="absolute top-[14px] left-[14px]
+                           bg-white text-[#11152D] text-[11px] font-semibold
+                           rounded-full px-[10px] py-[4px]
+                           shadow-[0_2px_10px_rgba(0,0,0,0.12)]">
+            102 Jobs Completed!
+          </span>
 
+          {/* Avatar + play */}
+          <div className="absolute -bottom-[30px] left-[20px] z-10">
+            <div className="relative w-[64px] h-[64px]">
+              <img src={ProfileAvatar} alt="User avatar"
+                   className="w-[64px] h-[64px] rounded-full object-cover ring-[3px] ring-white" />
+              <div className="absolute inset-0 flex items-center justify-center
+                              rounded-full bg-black/30">
+                <FaPlay className="text-white text-[12px] ml-[2px]" />
+              </div>
+            </div>
           </div>
+        </div>
 
-          {/* ── RIGHT — profile card illustration ───────────────── */}
-          <div className="relative w-full max-w-[500px] mx-auto lg:mx-0">
-
-            {/* Blue dot — top-left */}
-            <div
-              aria-hidden="true"
-              className="absolute top-[-10px] left-[-6px] z-20
-                         w-[18px] h-[18px] rounded-full
-                         bg-gradient-to-br from-[#5BC8FF] to-[#1A5DC8]"
-            />
-
-            {/* Floating avatar — right side overlapping card */}
-            <div className="absolute top-[60px] right-[-28px] z-20
-                            w-[80px] h-[80px] rounded-full overflow-hidden
-                            ring-[3px] ring-[#F5C542]
-                            shadow-[0_6px_20px_rgba(50,100,220,0.20)]">
-              <img src={AvatarGru} alt="Floating profile"
-                   className="w-full h-full object-cover object-top" />
-            </div>
-
-            {/* Main profile card */}
-            <div className="bg-white rounded-[32px]
-                            shadow-[0_24px_80px_rgba(80,100,220,0.12)]
-                            overflow-hidden">
-
-              {/* Banner */}
-              <div className="relative">
-                <img
-                  src={ProfileBanner}
-                  alt="Profile banner"
-                  className="w-full h-[140px] object-cover"
-                />
-
-                {/* Jobs completed badge */}
-                <span className="absolute top-4 left-4
-                                 bg-white text-[#11152D] text-[11px] font-semibold
-                                 rounded-full px-3 py-1
-                                 shadow-[0_2px_10px_rgba(0,0,0,0.12)]">
-                  102 Jobs Completed!
-                </span>
-
-                {/* Avatar + play button — overlapping banner */}
-                <div className="absolute -bottom-7 left-6 z-10">
-                  <div className="relative w-[60px] h-[60px]">
-                    <img
-                      src={ProfileAvatar}
-                      alt="User avatar"
-                      className="w-[60px] h-[60px] rounded-full object-cover
-                                 ring-[3px] ring-white"
-                    />
-                    <div className="absolute inset-0 flex items-center justify-center
-                                    rounded-full bg-black/30">
-                      <FaPlay className="text-white text-[11px] ml-0.5" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Card body */}
-              <div className="px-6 pt-12 pb-6">
-                <div className="flex flex-wrap gap-2">
-                  {skillTags.map((tag, i) => (
-                    <span key={i}
-                          className="bg-[#EEF2FF] text-[#4B6BFB]
-                                     text-[12px] font-medium
-                                     rounded-full px-3 py-1">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Floating review pill */}
-            <div className="mt-5 flex items-center gap-3
-                            bg-white rounded-[999px]
-                            shadow-[0_8px_32px_rgba(80,100,220,0.13)]
-                            px-4 py-3 max-w-[300px]">
-              <img src={ProfileAvatar} alt="Client"
-                   className="w-[38px] h-[38px] rounded-full object-cover flex-shrink-0" />
-              <div>
-                <p className="text-[#0FA9A9] text-[11px] font-semibold leading-tight">
-                  Past Client Feedback
-                </p>
-                <p className="text-[#11152D] text-[13px] font-bold leading-snug">
-                  Best Developer Ever!
-                </p>
-              </div>
-            </div>
-
+        {/* Card body */}
+        <div className="px-[20px] pt-[44px] pb-[20px]">
+          <div className="flex flex-wrap gap-[8px]">
+            {skillTags.map((tag, i) => (
+              <span key={i}
+                    className="bg-[#EEF2FF] text-[#4B6BFB]
+                               text-[12px] font-semibold rounded-full px-[12px] py-[5px]">
+                {tag}
+              </span>
+            ))}
           </div>
         </div>
       </div>
-    </section>
-  );
-};
+
+      {/* Floating review pill */}
+      <div className="absolute bottom-[30px] left-[10px] z-30
+                      flex items-center gap-[12px]
+                      bg-white rounded-[999px]
+                      shadow-[0_8px_32px_rgba(80,100,220,0.13)]
+                      px-[14px] py-[12px] w-[300px]">
+        <img src={ProfileAvatar} alt="Client"
+             className="w-[42px] h-[42px] rounded-full object-cover shrink-0" />
+        <div>
+          <p className="text-[#0FA9A9] text-[11px] font-semibold leading-tight">
+            Past Client Feedback
+          </p>
+          <p className="text-[#11152D] text-[14px] font-bold leading-snug">
+            Best Developer Ever!
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+);
+
+const FeatureShowcase = () => (
+  <section className="w-full bg-white pt-[160px] pb-0 overflow-hidden">
+    <div className="max-w-[1140px] mx-auto px-6 lg:px-0">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-[80px] items-start">
+
+        {/* LEFT — text */}
+        <div className="flex flex-col items-start pt-[48px]">
+          <span className="inline-flex items-center py-[7px] px-[20px] rounded-full
+                           bg-[#C4EDFF] text-[#2F4668] text-[14px] font-semibold mb-[24px]">
+            Custom Profile
+          </span>
+          <h2 className="text-[#11142D] font-bold
+                         text-[32px] sm:text-[40px] lg:text-[56px]
+                         leading-[1.15] lg:leading-[1.08] tracking-[-0.02em] mb-0">
+            Showcase Your Talents
+          </h2>
+          <p className="text-[#6B7088] font-normal text-[18px] leading-[1.9]
+                        max-w-[460px] mt-[28px]">
+            Personalize your profile with everything that makes you unique.
+            Add an introductory video and other media for a personal touch
+            that stands out to employers and candidates.
+          </p>
+        </div>
+
+        {/* RIGHT — illustration */}
+        <div className="flex justify-center lg:justify-end">
+          <ShowcaseIllustration />
+        </div>
+
+      </div>
+    </div>
+  </section>
+);
 
 export default FeatureShowcase;

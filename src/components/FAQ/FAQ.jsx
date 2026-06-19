@@ -16,40 +16,42 @@ const faqs = [
   },
 ];
 
-const FAQ = () => {
-  return (
-    <section className="w-full bg-white py-[100px]">
-      <div className="max-w-[1140px] mx-auto px-6 lg:px-0">
+const FAQ = () => (
+  <section className="w-full bg-white pt-[140px] pb-0">
+    <div className="max-w-[850px] mx-auto px-6 lg:px-0">
 
-        <h2 className="text-[#11152D] font-bold text-[40px] md:text-[48px] mb-[60px]">
-          Common Questions
-        </h2>
+      <h2 className="text-[#11142D] font-bold
+                     text-[36px] md:text-[48px]
+                     text-center leading-[1.08] mb-[64px]">
+        Common Questions
+      </h2>
 
-        <div>
-          {faqs.map((item, index) => (
-            <div
-              key={index}
-              className={index < faqs.length - 1 ? "pb-8 mb-8 border-b border-[#E8EAF0]" : ""}
-            >
-              <h3 className="text-[#11152D] font-bold text-[18px]">
-                {item.question}
-              </h3>
-              <p className="text-[#73758B] text-[16px] leading-[1.8] mt-3">
-                {item.answer}
-              </p>
-            </div>
-          ))}
-        </div>
+      <div className="flex flex-col">
+        {faqs.map((item, i) => (
+          <div key={i}
+               className="pb-[40px] mb-[40px] border-b border-[#E8EAF0] last:border-b-0 last:pb-0 last:mb-0">
+            <h3 className="text-[#11142D] font-bold text-[22px] leading-snug">
+              {item.question}
+            </h3>
+            <p className="text-[#6B7088] text-[18px] leading-[1.9] mt-[14px]">
+              {item.answer}
+            </p>
+          </div>
+        ))}
+      </div>
 
-        <button className="mt-[40px] border border-[#4B6BFB] text-[#4B6BFB]
-                           rounded-[12px] px-8 py-3 text-[15px] font-semibold
-                           hover:bg-[#4B6BFB] hover:text-white transition-colors duration-200">
+      <div className="flex justify-center mt-[56px]">
+        <button className="border-2 border-[#4B6BFB] text-[#4B6BFB]
+                           rounded-full px-[36px] py-[14px]
+                           text-[16px] font-semibold
+                           hover:bg-[#4B6BFB] hover:text-white
+                           transition-all duration-200 cursor-pointer">
           More Questions
         </button>
-
       </div>
-    </section>
-  );
-};
+
+    </div>
+  </section>
+);
 
 export default FAQ;

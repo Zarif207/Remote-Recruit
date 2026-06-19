@@ -19,8 +19,8 @@ const faqs = [
 ];
 
 const FAQ = () => (
-  <section className="w-full bg-white py-[60px] md:py-[80px] lg:py-[120px]">
-    <div className="max-w-[850px] mx-auto px-4 sm:px-6">
+  <section className="w-full bg-white py-15 md:py-20 lg:py-30">
+    <div className="max-w-212.5 mx-auto px-4 sm:px-6">
 
       <motion.h2
         initial={{ opacity: 0, y: 24 }}
@@ -48,7 +48,7 @@ const FAQ = () => (
                            text-[17px] sm:text-[19px] md:text-[21px]">
               {item.question}
             </h3>
-            <p className="text-[#6B7088] leading-[1.85] mt-3 break-words
+            <p className="text-[#6B7088] leading-[1.85] mt-3 wrap-break-word
                           text-[14px] sm:text-[15px] md:text-[16px]">
               {item.answer}
             </p>

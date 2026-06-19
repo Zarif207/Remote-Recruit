@@ -19,7 +19,7 @@ const CTA = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="max-w-[480px] mx-auto text-center"
+        className="max-w-120 mx-auto text-center"
       >
         <p className="text-[#1E3E85] text-[13px] sm:text-[14px] font-semibold mb-2">
           Are you ready?
@@ -49,11 +49,11 @@ const CTA = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
-        className="mt-8 overflow-hidden rounded-[16px] max-w-[480px] mx-auto
+        className="mt-8 overflow-hidden rounded-2xl max-w-120 mx-auto
                    shadow-[0_8px_40px_rgba(58,77,163,0.15)]"
       >
         <img src={CTAImg} alt="RemoteRecruit dashboard"
-             className="w-full h-auto object-cover object-left-top select-none"
+             className="w-full h-auto object-cover object-top-left select-none"
              draggable={false} />
       </motion.div>
     </div>
@@ -69,11 +69,11 @@ const CTA = () => (
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="w-1/2 shrink-0 overflow-hidden rounded-[16px]
+        className="w-1/2 shrink-0 overflow-hidden rounded-2xl
                    shadow-[0_8px_40px_rgba(58,77,163,0.15)]"
       >
         <img src={CTAImg} alt="RemoteRecruit dashboard"
-             className="w-full h-auto object-cover object-left-top select-none"
+             className="w-full h-auto object-cover object-top-left select-none"
              draggable={false} />
       </motion.div>
 
@@ -127,7 +127,7 @@ const CTA = () => (
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.65, ease: "easeOut", delay: 0.1 }}
         className="absolute right-[18%] top-1/2 -translate-y-1/2
-                   w-[38%] max-w-[440px] text-left"
+                   w-[38%] max-w-110 text-left"
       >
         <p className="text-[#1E3E85] text-base font-semibold mb-3">Are you ready?</p>
         <h2 className="text-[#11142D] font-normal text-[44px] 2xl:text-[60px]

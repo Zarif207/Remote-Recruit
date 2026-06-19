@@ -92,7 +92,13 @@ bash npm run preview
 
 ## Folder Structure
 
-text src/ ├── assets/ ├── components/ ├── pages/ ├── utils/ ├── App.jsx └── main.jsx 
+src/
+├── assets/
+├── components/
+├── pages/
+├── utils/
+├── App.jsx
+└── main.jsx
 
 ---
 

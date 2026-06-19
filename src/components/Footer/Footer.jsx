@@ -77,10 +77,10 @@ const Footer = () => (
         >
           <div
             className="flex flex-col items-center justify-center
-                       bg-[#EEF2FF] rounded-[14px]
+                       bg-[#EBF0FF] rounded-[12px]
                        w-full sm:min-w-[140px] sm:w-auto px-4 py-5 sm:mr-6 shrink-0 mb-5 sm:mb-0"
           >
-            <p className="text-[#4B6BFB] text-[36px] font-bold leading-none">Free</p>
+            <p className="text-[#51B4DA] text-[36px] font-bold leading-none">Free</p>
             <p className="text-[#6B7088] text-[16px] mt-2">Basic</p>
           </div>
 
@@ -107,7 +107,7 @@ const Footer = () => (
             <button
               type="button"
               className="group relative overflow-hidden mt-6 w-full h-[56px]
-                         rounded-[14px] border-2 border-[#1A3585] bg-white
+                         rounded-full border-2 border-[#1A3585] bg-white
                          text-[#1A3585] text-[16px] font-bold
                          transition-all duration-500 hover:border-transparent
                          focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1A3585]"
@@ -130,7 +130,7 @@ const Footer = () => (
         >
           <div
             className="relative flex flex-col items-center justify-center
-                       bg-[#EEF2FF] rounded-[14px]
+                       bg-[#EBF0FF] rounded-[12px]
                        w-full sm:min-w-[140px] sm:w-auto px-4 py-5 sm:mr-6 shrink-0 mb-5 sm:mb-0"
           >
             <img
@@ -161,7 +161,7 @@ const Footer = () => (
             </ul>
             <button
               type="button"
-              className="mt-6 w-full h-[56px] text-white rounded-[14px] text-[16px] font-bold
+              className="mt-6 w-full h-[56px] text-white rounded-full text-[16px] font-bold
                          bg-gradient-to-r from-[#3471A9] to-[#23488C]
                          hover:brightness-110 transition-all duration-300
                          focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"

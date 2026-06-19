@@ -5,15 +5,15 @@ import { FaArrowRight } from "react-icons/fa";
 /*
   Three distinct layouts:
   ─────────────────────────────────────────────────────────────
-  Mobile  (<768px):  stacked — text then image, centred
-  Tablet  (768–1023px): two-column side-by-side, image | text
-  Desktop (≥1024px): original full-width with text overlaid
+  Mobile  (<768px):       stacked — text then image, centred
+  Tablet  (768–1279px):   two-column side-by-side, image | text
+  Desktop (≥1280px):      original full-width with text overlaid
 */
 const CTA = () => (
   <section className="w-full overflow-hidden">
 
     {/* ── MOBILE only (<768px) — stacked ──────────────────────── */}
-    <div className="sm:block md:hidden bg-[#EEF0FF] px-4 py-12">
+    <div className="block md:hidden bg-[#EEF0FF] px-4 sm:px-6 py-12 sm:py-14">
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -21,18 +21,20 @@ const CTA = () => (
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="max-w-[480px] mx-auto text-center"
       >
-        <p className="text-[#1E3E85] text-[14px] font-semibold mb-2">Are you ready?</p>
-        <h2 className="text-[#11142D] font-normal leading-[1.1] tracking-[-0.02em]
-                       text-[26px] sm:text-[32px] mb-4">
+        <p className="text-[#1E3E85] text-[13px] sm:text-[14px] font-semibold mb-2">
+          Are you ready?
+        </p>
+        <h2 className="text-[#11142D] font-normal leading-[1.15] tracking-[-0.02em]
+                       text-[24px] sm:text-[32px] mb-4">
           Help is only a few clicks away!
         </h2>
-        <p className="text-[#6B7088] text-[14px] leading-[1.75] mb-6">
+        <p className="text-[#6B7088] text-[13px] sm:text-[14px] leading-[1.75] mb-6">
           Click below to get set up super quickly and find help now!
         </p>
         <button type="button"
                 className="inline-flex items-center gap-3 mx-auto
                            bg-[#C4EDFF] text-[#1B3B66] rounded-full
-                           pl-2 pr-6 py-2 text-[14px] font-semibold
+                           pl-2 pr-6 py-2 text-[13px] sm:text-[14px] font-semibold
                            hover:brightness-95 transition-all duration-200">
           <span className="w-9 h-9 rounded-full bg-[#51B4DA]
                            flex items-center justify-center shrink-0">
@@ -56,10 +58,10 @@ const CTA = () => (
       </motion.div>
     </div>
 
-    {/* ── TABLET (768px–1023px) — two column side by side ─────── */}
-    <div className="hidden md:flex lg:hidden bg-[#EEF0FF]
-                    items-center gap-8 sm:gap-10
-                    px-6 sm:px-10 py-12 sm:py-16">
+    {/* ── TABLET / SMALL LAPTOP (768px–1279px) — two column side by side ─── */}
+    <div className="hidden md:flex xl:hidden bg-[#EEF0FF]
+                    items-center gap-8 lg:gap-12
+                    px-6 sm:px-10 lg:px-16 py-12 sm:py-16 lg:py-20">
 
       {/* Left — image */}
       <motion.div
@@ -83,12 +85,14 @@ const CTA = () => (
         transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
         className="w-1/2 text-left"
       >
-        <p className="text-[#1E3E85] text-[14px] font-semibold mb-3">Are you ready?</p>
+        <p className="text-[#1E3E85] text-[14px] lg:text-[15px] font-semibold mb-3">
+          Are you ready?
+        </p>
         <h2 className="text-[#11142D] font-normal leading-[1.1] tracking-[-0.02em]
-                       text-[36px] md:text-[44px] mb-4">
+                       text-[32px] md:text-[36px] lg:text-[46px] mb-4">
           Help is only a few clicks away!
         </h2>
-        <p className="text-[#6B7088] text-[15px] leading-[1.75] mb-6">
+        <p className="text-[#6B7088] text-[15px] lg:text-[17px] leading-[1.75] mb-6">
           Click below to get set up super quickly and find help now!
         </p>
         <button type="button"
@@ -105,8 +109,8 @@ const CTA = () => (
       </motion.div>
     </div>
 
-    {/* ── DESKTOP (≥1024px) — original full-width overlaid ────── */}
-    <div className="hidden lg:block relative w-full">
+    {/* ── DESKTOP (≥1280px) — original full-width overlaid ────── */}
+    <div className="hidden xl:block relative w-full">
       <motion.img
         src={CTAImg}
         alt="RemoteRecruit dashboard"
@@ -126,10 +130,11 @@ const CTA = () => (
                    w-[38%] max-w-[440px] text-left"
       >
         <p className="text-[#1E3E85] text-base font-semibold mb-3">Are you ready?</p>
-        <h2 className="text-[#11142D] font-normal text-[60px] leading-[1.05] tracking-[-0.02em]">
+        <h2 className="text-[#11142D] font-normal text-[44px] 2xl:text-[60px]
+                       leading-[1.05] tracking-[-0.02em]">
           Help is only a few clicks away!
         </h2>
-        <p className="text-[#6B7088] text-[20px] leading-[1.8] mt-7">
+        <p className="text-[#6B7088] text-[17px] 2xl:text-[20px] leading-[1.8] mt-7">
           Click below to get set up super quickly and find help now!
         </p>
         <button type="button"

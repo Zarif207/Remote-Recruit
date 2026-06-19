@@ -1,6 +1,18 @@
 # RemoteRecruit Landing Page
 
-RemoteRecruit is a modern recruitment landing page designed and developed with React and Tailwind CSS. The application focuses on delivering a polished user interface, responsive experience across all devices, smooth interactions, and high-quality implementation aligned with the provided design requirements.
+RemoteRecruit is a modern recruitment landing page designed and developed with React and Tailwind CSS. The application focuses on delivering a polished user interface, responsive experiences across all devices, smooth interactions, and high-quality implementation aligned with the provided design requirements.
+
+---
+
+## Live Demo
+
+Live URL:  
+https://remote-recruit-demo.netlify.app/
+
+## Design Reference
+
+Figma Design:  
+https://www.figma.com/design/EtejDtLu3wavBclhHY6JNa/Design?node-id=1-132&t=dDbivjLjWDfJLL3k-0
 
 ---
 
@@ -44,24 +56,19 @@ bash npm run preview
 ## Frameworks & Libraries Used
 
 ### Core
-
 - React.js
 - Vite
 
 ### Styling
-
 - Tailwind CSS
 
 ### Animations
-
 - Framer Motion
 
 ### Icons
-
 - React Icons
 
 ### Deployment
-
 - Netlify
 
 ---
@@ -75,7 +82,7 @@ bash npm run preview
 - Interactive hover states and transitions
 - Responsive pricing cards
 - FAQ section with expandable items
-- Social media links
+- Social media integration
 - Optimized image handling
 - Accessibility-focused implementation
 
@@ -92,13 +99,13 @@ bash npm run preview
 
 ## Folder Structure
 
-src/
-├── assets/
-├── components/
-├── pages/
-├── utils/
-├── App.jsx
-└── main.jsx
+text src/ 
+├── assets/ 
+├── components/ 
+├── pages/ 
+├── utils/ 
+├── App.jsx 
+└── main.jsx 
 
 ---
 

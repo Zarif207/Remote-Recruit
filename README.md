@@ -1,16 +1,101 @@
-# React + Vite
+# RemoteRecruit Landing Page
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+RemoteRecruit is a modern recruitment landing page designed and developed with React and Tailwind CSS. The application focuses on delivering a polished user interface, responsive experience across all devices, smooth interactions, and high-quality implementation aligned with the provided design requirements.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Project Setup
 
-## React Compiler
+### Prerequisites
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Node.js (v18 or higher recommended)
+- npm
 
-## Expanding the ESLint configuration
+### Installation
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Clone the repository:
+
+bash git clone <repository-url> cd remote-recruit 
+
+Install dependencies:
+
+bash npm install 
+
+Start the development server:
+
+bash npm run dev 
+
+Open your browser and visit:
+
+text http://localhost:5173 
+
+### Production Build
+
+Create an optimized production build:
+
+bash npm run build 
+
+Preview the production build locally:
+
+bash npm run preview 
+
+---
+
+## Frameworks & Libraries Used
+
+### Core
+
+- React.js
+- Vite
+
+### Styling
+
+- Tailwind CSS
+
+### Animations
+
+- Framer Motion
+
+### Icons
+
+- React Icons
+
+### Deployment
+
+- Netlify
+
+---
+
+## Features
+
+- Fully responsive design (Desktop, Tablet, Mobile)
+- Sticky navigation bar
+- Smooth scrolling interactions
+- Scroll-to-top functionality
+- Interactive hover states and transitions
+- Responsive pricing cards
+- FAQ section with expandable items
+- Social media links
+- Optimized image handling
+- Accessibility-focused implementation
+
+---
+
+## Known Issues / Limitations
+
+- FAQ content currently uses placeholder/mock content and can be replaced with production-ready copy.
+- Social media links currently point to platform homepages and can be updated with official company profiles.
+- Lighthouse scores may vary slightly depending on browser extensions, device performance, and network conditions.
+- The project is designed as a static landing page and does not include backend functionality or authentication.
+
+---
+
+## Folder Structure
+
+text src/ ├── assets/ ├── components/ ├── pages/ ├── utils/ ├── App.jsx └── main.jsx 
+
+---
+
+## Author
+
+Developed as part of a Front-End Development assessment, focusing on design fidelity, responsiveness, accessibility, and modern React development practices.
